@@ -1,0 +1,149 @@
+=> creating output/coco/pose_hrnet/w32_256x192_adam_lr1e-3
+=> creating log/coco/pose_hrnet/w32_256x192_adam_lr1e-3_2021-09-28-09-12
+Namespace(cfg='experiments/coco/hrnet/w32_256x192_adam_lr1e-3.yaml', dataDir='', logDir='', modelDir='', opts=['TEST.MODEL_FILE', 'models/pytorch/pose_coco/pose_hrnet_w32_256x192.pth', 'TEST.USE_GT_BBOX', 'False'], prevModelDir='')
+AUTO_RESUME: True
+CUDNN:
+  BENCHMARK: True
+  DETERMINISTIC: False
+  ENABLED: True
+DATASET:
+  COLOR_RGB: True
+  DATASET: coco
+  DATA_FORMAT: jpg
+  FLIP: True
+  HYBRID_JOINTS_TYPE: 
+  NUM_JOINTS_HALF_BODY: 8
+  PROB_HALF_BODY: 0.3
+  ROOT: data/coco/
+  ROT_FACTOR: 45
+  SCALE_FACTOR: 0.35
+  SELECT_DATA: False
+  TEST_SET: val2017
+  TRAIN_SET: train2017
+DATA_DIR: 
+DEBUG:
+  DEBUG: True
+  SAVE_BATCH_IMAGES_GT: True
+  SAVE_BATCH_IMAGES_PRED: True
+  SAVE_HEATMAPS_GT: True
+  SAVE_HEATMAPS_PRED: True
+GPUS: (0, 1, 2, 3)
+LOG_DIR: log
+LOSS:
+  TOPK: 8
+  USE_DIFFERENT_JOINTS_WEIGHT: False
+  USE_OHKM: False
+  USE_TARGET_WEIGHT: True
+MODEL:
+  EXTRA:
+    FINAL_CONV_KERNEL: 1
+    PRETRAINED_LAYERS: ['conv1', 'bn1', 'conv2', 'bn2', 'layer1', 'transition1', 'stage2', 'transition2', 'stage3', 'transition3', 'stage4']
+    STAGE2:
+      BLOCK: BASIC
+      FUSE_METHOD: SUM
+      NUM_BLOCKS: [4, 4]
+      NUM_BRANCHES: 2
+      NUM_CHANNELS: [32, 64]
+      NUM_MODULES: 1
+    STAGE3:
+      BLOCK: BASIC
+      FUSE_METHOD: SUM
+      NUM_BLOCKS: [4, 4, 4]
+      NUM_BRANCHES: 3
+      NUM_CHANNELS: [32, 64, 128]
+      NUM_MODULES: 4
+    STAGE4:
+      BLOCK: BASIC
+      FUSE_METHOD: SUM
+      NUM_BLOCKS: [4, 4, 4, 4]
+      NUM_BRANCHES: 4
+      NUM_CHANNELS: [32, 64, 128, 256]
+      NUM_MODULES: 3
+  HEATMAP_SIZE: [48, 64]
+  IMAGE_SIZE: [192, 256]
+  INIT_WEIGHTS: True
+  NAME: pose_hrnet
+  NUM_JOINTS: 17
+  PRETRAINED: models/pytorch/imagenet/hrnet_w32-36af842e.pth
+  SIGMA: 2
+  TAG_PER_JOINT: True
+  TARGET_TYPE: gaussian
+OUTPUT_DIR: output
+PIN_MEMORY: True
+PRINT_FREQ: 100
+RANK: 0
+TEST:
+  BATCH_SIZE_PER_GPU: 32
+  BBOX_THRE: 1.0
+  COCO_BBOX_FILE: data/coco/person_detection_results/COCO_val2017_detections_AP_H_56_person.json
+  FLIP_TEST: True
+  IMAGE_THRE: 0.0
+  IN_VIS_THRE: 0.2
+  MODEL_FILE: models/pytorch/pose_coco/pose_hrnet_w32_256x192.pth
+  NMS_THRE: 1.0
+  OKS_THRE: 0.9
+  POST_PROCESS: True
+  SHIFT_HEATMAP: True
+  SOFT_NMS: False
+  USE_GT_BBOX: False
+TRAIN:
+  BATCH_SIZE_PER_GPU: 32
+  BEGIN_EPOCH: 0
+  CHECKPOINT: 
+  END_EPOCH: 210
+  GAMMA1: 0.99
+  GAMMA2: 0.0
+  LR: 0.001
+  LR_FACTOR: 0.1
+  LR_STEP: [170, 200]
+  MOMENTUM: 0.9
+  NESTEROV: False
+  OPTIMIZER: adam
+  RESUME: False
+  SHUFFLE: True
+  WD: 0.0001
+WORKERS: 24
+=> loading model from models/pytorch/pose_coco/pose_hrnet_w32_256x192.pth
+loading annotations into memory...
+Done (t=0.32s)
+creating index...
+index created!
+=> classes: ['__background__', 'person']
+=> num_images: 5000
+=> Total boxes: 104125
+=> Total boxes after fliter low score@0.0: 104125
+=> load 104125 samples
+/usr/local/lib/python3.7/dist-packages/torch/utils/data/dataloader.py:481: UserWarning: This DataLoader will create 24 worker processes in total. Our suggested max number of worker in current system is 2, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
+  cpuset_checked))
+Test: [0/814]	Time 122.229 (122.229)	Loss 0.0002 (0.0002)	Accuracy 0.000 (0.000)
+Test: [100/814]	Time 2.873 (4.293)	Loss 0.0002 (0.0001)	Accuracy 0.000 (0.003)
+Test: [200/814]	Time 2.857 (3.589)	Loss 0.0001 (0.0001)	Accuracy 0.000 (0.003)
+Test: [300/814]	Time 2.882 (3.350)	Loss 0.0000 (0.0001)	Accuracy 0.000 (0.002)
+Test: [400/814]	Time 2.849 (3.229)	Loss 0.0001 (0.0001)	Accuracy 0.000 (0.003)
+Test: [500/814]	Time 2.849 (3.157)	Loss 0.0000 (0.0001)	Accuracy 0.000 (0.003)
+Test: [600/814]	Time 2.800 (3.108)	Loss 0.0001 (0.0001)	Accuracy 0.000 (0.003)
+Test: [700/814]	Time 2.818 (3.073)	Loss 0.0005 (0.0001)	Accuracy 0.000 (0.003)
+Test: [800/814]	Time 2.760 (3.043)	Loss 0.0002 (0.0001)	Accuracy 0.059 (0.003)
+=> writing results json to output/coco/pose_hrnet/w32_256x192_adam_lr1e-3/results/keypoints_val2017_results_0.json
+Loading and preparing results...
+DONE (t=5.77s)
+creating index...
+index created!
+Running per image evaluation...
+Evaluate annotation type *keypoints*
+DONE (t=17.50s).
+Accumulating evaluation results...
+DONE (t=0.40s).
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets= 20 ] = 0.744
+ Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets= 20 ] = 0.905
+ Average Precision  (AP) @[ IoU=0.75      | area=   all | maxDets= 20 ] = 0.819
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium | maxDets= 20 ] = 0.708
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= large | maxDets= 20 ] = 0.810
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets= 20 ] = 0.798
+ Average Recall     (AR) @[ IoU=0.50      | area=   all | maxDets= 20 ] = 0.942
+ Average Recall     (AR) @[ IoU=0.75      | area=   all | maxDets= 20 ] = 0.865
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium | maxDets= 20 ] = 0.757
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets= 20 ] = 0.858
+| Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+|---|---|---|---|---|---|---|---|---|---|---|
+| pose_hrnet | 0.744 | 0.905 | 0.819 | 0.708 | 0.810 | 0.798 | 0.942 | 0.865 | 0.757 | 0.858 |
