@@ -20,7 +20,7 @@ DATASET:
   ROOT: 'data/coco/'
   ROT_FACTOR: 45
   SCALE_FACTOR: 0.35
-  TEST_SET: 'val2017'
+  TEST_SET: 'ads_project_all_images'
   TRAIN_SET: 'train2017'
 MODEL:
   INIT_WEIGHTS: true
@@ -108,7 +108,7 @@ TRAIN:
   NESTEROV: false
 TEST:
   BATCH_SIZE_PER_GPU: 24
-  COCO_BBOX_FILE: 'data/coco/person_detection_results/COCO_val2017_detections_AP_H_56_person.json'
+  COCO_BBOX_FILE: 'data/coco/person_detection_results/person_detection_all_images_clean.json'
   BBOX_THRE: 1.0
   IMAGE_THRE: 0.0
   IN_VIS_THRE: 0.2

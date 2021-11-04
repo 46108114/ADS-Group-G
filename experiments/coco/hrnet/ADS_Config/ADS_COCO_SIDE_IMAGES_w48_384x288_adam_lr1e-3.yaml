@@ -20,7 +20,7 @@ DATASET:
   ROOT: 'data/coco/'
   ROT_FACTOR: 45
   SCALE_FACTOR: 0.35
-  TEST_SET: 'val2017'
+  TEST_SET: 'ads_project_side'
   TRAIN_SET: 'train2017'
 MODEL:
   INIT_WEIGHTS: true
